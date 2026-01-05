@@ -45,21 +45,9 @@ function FileUpload() {
       const followersSet = new Set(followersList);
       const followingSet = new Set(followingList);
 
-      const mutualResult = followersList.filter((u) =>
-        followingSet.has(u)
-      );
-
-      const notFollowBackResult = followingList.filter(
-        (u) => !followersSet.has(u)
-      );
-
-      const youNotFollowBackResult = followersList.filter(
-        (u) => !followingSet.has(u)
-      );
-
-      setMutual(mutualResult);
-      setNotFollowBack(notFollowBackResult);
-      setYouNotFollowBack(youNotFollowBackResult);
+      setMutual(followersList.filter((u) => followingSet.has(u)));
+      setNotFollowBack(followingList.filter((u) => !followersSet.has(u)));
+      setYouNotFollowBack(followersList.filter((u) => !followingSet.has(u)));
 
       // reset view setiap analyze ulang
       setActiveView(null);
@@ -69,6 +57,16 @@ function FileUpload() {
       console.error(error);
     }
   };
+
+  const buttonStyle = (isActive, color) => ({
+    backgroundColor: isActive ? color : "#e5e7eb",
+    color: isActive ? "#fff" : "#000",
+    border: "none",
+    padding: "0.45rem 0.85rem",
+    borderRadius: "6px",
+    cursor: "pointer",
+    fontWeight: 500
+  });
 
   return (
     <div>
@@ -104,38 +102,41 @@ function FileUpload() {
       <h3>Show User List</h3>
 
       <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-        <button type="button" onClick={() => setActiveView("mutual")}>
+        <button
+          type="button"
+          onClick={() => setActiveView("mutual")}
+          style={buttonStyle(activeView === "mutual", "#2563eb")}
+        >
           Mutual
         </button>
 
-        <button type="button" onClick={() => setActiveView("notFollowBack")}>
+        <button
+          type="button"
+          onClick={() => setActiveView("notFollowBack")}
+          style={buttonStyle(activeView === "notFollowBack", "#dc2626")}
+        >
           Not Follow Back
         </button>
 
-        <button type="button" onClick={() => setActiveView("youNotFollowBack")}>
+        <button
+          type="button"
+          onClick={() => setActiveView("youNotFollowBack")}
+          style={buttonStyle(activeView === "youNotFollowBack", "#ca8a04")}
+        >
           You Don’t Follow Back
         </button>
       </div>
 
       {activeView === "mutual" && (
-        <ResultList
-          title="Mutual Followers"
-          users={mutual}
-        />
+        <ResultList title="Mutual Followers" users={mutual} />
       )}
 
       {activeView === "notFollowBack" && (
-        <ResultList
-          title="Not Follow Back"
-          users={notFollowBack}
-        />
+        <ResultList title="Not Follow Back" users={notFollowBack} />
       )}
 
       {activeView === "youNotFollowBack" && (
-        <ResultList
-          title="You Don’t Follow Back"
-          users={youNotFollowBack}
-        />
+        <ResultList title="You Don’t Follow Back" users={youNotFollowBack} />
       )}
     </div>
   );
