@@ -6,6 +6,10 @@ export function parseFollowers(json) {
 
 export function parseFollowing(json) {
   return json.relationships_following
-    .map(item => item.string_list_data?.[0]?.value)
+    .map(item =>
+      item.title ||
+      item.string_list_data?.[0]?.value ||
+      null
+    )
     .filter(Boolean);
 }
