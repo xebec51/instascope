@@ -19,10 +19,12 @@ function ResultList({ title, users }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         style={{
-          padding: "0.4rem",
+          padding: "0.45rem",
           width: "100%",
-          maxWidth: "300px",
-          marginBottom: "0.75rem"
+          maxWidth: "320px",
+          marginBottom: "0.75rem",
+          borderRadius: "6px",
+          border: "1px solid #ccc"
         }}
       />
 
@@ -36,15 +38,29 @@ function ResultList({ title, users }) {
       ) : (
         <ul
           style={{
-            maxHeight: "300px",
+            maxHeight: "320px",
             overflowY: "auto",
             border: "1px solid #ddd",
             padding: "0.5rem",
-            borderRadius: "6px"
+            borderRadius: "6px",
+            listStyle: "none"
           }}
         >
           {filteredUsers.map((username, index) => (
-            <li key={index}>{username}</li>
+            <li key={index} style={{ marginBottom: "0.35rem" }}>
+              <a
+                href={`https://www.instagram.com/${username}/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  textDecoration: "none",
+                  color: "#2563eb",
+                  fontWeight: 500
+                }}
+              >
+                @{username}
+              </a>
+            </li>
           ))}
         </ul>
       )}
