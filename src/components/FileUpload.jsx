@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { parseFollowers, parseFollowing } from "../utils/instagramParser";
+import ResultList from "./ResultList";
 
 function FileUpload() {
   const [followers, setFollowers] = useState([]);
@@ -8,6 +9,8 @@ function FileUpload() {
   const [mutual, setMutual] = useState([]);
   const [notFollowBack, setNotFollowBack] = useState([]);
   const [youNotFollowBack, setYouNotFollowBack] = useState([]);
+
+  const [activeView, setActiveView] = useState(null);
 
   const readJSON = (file) => {
     return new Promise((resolve, reject) => {
@@ -30,19 +33,15 @@ function FileUpload() {
     }
 
     try {
-      // Read JSON files
       const followersJSON = await readJSON(followersFile);
       const followingJSON = await readJSON(followingFile);
 
-      // Parse usernames
       const followersList = parseFollowers(followersJSON);
       const followingList = parseFollowing(followingJSON);
 
-      // Save raw data
       setFollowers(followersList);
       setFollowing(followingList);
 
-      // Analysis using Set (fast & accurate)
       const followersSet = new Set(followersList);
       const followingSet = new Set(followingList);
 
@@ -58,17 +57,12 @@ function FileUpload() {
         (u) => !followingSet.has(u)
       );
 
-      // Save analysis results
       setMutual(mutualResult);
       setNotFollowBack(notFollowBackResult);
       setYouNotFollowBack(youNotFollowBackResult);
 
-      // Debug (optional)
-      console.log("Followers:", followersList);
-      console.log("Following:", followingList);
-      console.log("Mutual:", mutualResult);
-      console.log("Not Follow Back:", notFollowBackResult);
-      console.log("You Don't Follow Back:", youNotFollowBackResult);
+      // reset view setiap analyze ulang
+      setActiveView(null);
 
     } catch (error) {
       alert("Failed to read or process JSON files.");
@@ -106,6 +100,43 @@ function FileUpload() {
         <li>Not Follow Back: <strong>{notFollowBack.length}</strong></li>
         <li>You Don’t Follow Back: <strong>{youNotFollowBack.length}</strong></li>
       </ul>
+
+      <h3>Show User List</h3>
+
+      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+        <button type="button" onClick={() => setActiveView("mutual")}>
+          Mutual
+        </button>
+
+        <button type="button" onClick={() => setActiveView("notFollowBack")}>
+          Not Follow Back
+        </button>
+
+        <button type="button" onClick={() => setActiveView("youNotFollowBack")}>
+          You Don’t Follow Back
+        </button>
+      </div>
+
+      {activeView === "mutual" && (
+        <ResultList
+          title="Mutual Followers"
+          users={mutual}
+        />
+      )}
+
+      {activeView === "notFollowBack" && (
+        <ResultList
+          title="Not Follow Back"
+          users={notFollowBack}
+        />
+      )}
+
+      {activeView === "youNotFollowBack" && (
+        <ResultList
+          title="You Don’t Follow Back"
+          users={youNotFollowBack}
+        />
+      )}
     </div>
   );
 }
