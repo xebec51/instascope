@@ -45,11 +45,23 @@ function FileUpload() {
       const followersSet = new Set(followersList);
       const followingSet = new Set(followingList);
 
-      setMutual(followersList.filter((u) => followingSet.has(u)));
-      setNotFollowBack(followingList.filter((u) => !followersSet.has(u)));
-      setYouNotFollowBack(followersList.filter((u) => !followingSet.has(u)));
+      const mutualResult = followersList.filter((u) =>
+        followingSet.has(u)
+      );
 
-      // reset view setiap analyze ulang
+      const notFollowBackResult = followingList.filter(
+        (u) => !followersSet.has(u)
+      );
+
+      const youNotFollowBackResult = followersList.filter(
+        (u) => !followingSet.has(u)
+      );
+
+      setMutual(mutualResult);
+      setNotFollowBack(notFollowBackResult);
+      setYouNotFollowBack(youNotFollowBackResult);
+
+      // reset menu setiap analyze ulang
       setActiveView(null);
 
     } catch (error) {
@@ -107,7 +119,7 @@ function FileUpload() {
           onClick={() => setActiveView("mutual")}
           style={buttonStyle(activeView === "mutual", "#2563eb")}
         >
-          Mutual
+          Mutual ({mutual.length})
         </button>
 
         <button
@@ -115,7 +127,7 @@ function FileUpload() {
           onClick={() => setActiveView("notFollowBack")}
           style={buttonStyle(activeView === "notFollowBack", "#dc2626")}
         >
-          Not Follow Back
+          Not Follow Back ({notFollowBack.length})
         </button>
 
         <button
@@ -123,7 +135,7 @@ function FileUpload() {
           onClick={() => setActiveView("youNotFollowBack")}
           style={buttonStyle(activeView === "youNotFollowBack", "#ca8a04")}
         >
-          You Don’t Follow Back
+          You Don’t Follow Back ({youNotFollowBack.length})
         </button>
       </div>
 
