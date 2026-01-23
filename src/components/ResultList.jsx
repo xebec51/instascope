@@ -34,22 +34,15 @@ function ResultList({ title, users }) {
   }, [users, query]);
 
   return (
-    <div style={{ marginTop: "1.5rem" }}>
+    <div className="result-list-container">
       <h3>{title}</h3>
 
       <input
         type="text"
+        className="search-input"
         placeholder="Search username..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        style={{
-          padding: "0.45rem",
-          width: "100%",
-          maxWidth: "320px",
-          marginBottom: "0.75rem",
-          borderRadius: "6px",
-          border: "1px solid #ccc"
-        }}
       />
 
       <p>
@@ -60,29 +53,14 @@ function ResultList({ title, users }) {
       {filteredUsers.length === 0 ? (
         <p>No matching users.</p>
       ) : (
-        <ul
-          style={{
-            maxHeight: "320px",
-            overflowY: "auto",
-            border: "1px solid #ddd",
-            padding: "0.5rem",
-            borderRadius: "6px",
-            listStyle: "none"
-          }}
-        >
+        <ul className="user-list">
           {filteredUsers.map((username, index) => (
-            <li key={index} style={{ marginBottom: "0.4rem" }}>
+            <li key={index} className="user-item">
               <a
                 href={`https://www.instagram.com/${username}/`}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  textDecoration: "none",
-                  color: "#2563eb",
-                  fontWeight: 500
-                }}
+                className="user-link"
               >
                 <InstagramIcon />
                 @{username}

@@ -1,10 +1,13 @@
 import FileUpload from "./components/FileUpload";
+import "./App.css";
 
 function App() {
   return (
-    <div style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
-      <h1>InstaScope</h1>
-      <p>Analyze Instagram followers and following from JSON export.</p>
+    <div className="app-container">
+      <header>
+        <h1>InstaScope</h1>
+        <p>Analyze Instagram followers and following from JSON export.</p>
+      </header>
 
       {/* INI WAJIB ADA */}
       <FileUpload />

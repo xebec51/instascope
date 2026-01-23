@@ -70,54 +70,60 @@ function FileUpload() {
     }
   };
 
-  const buttonStyle = (isActive, color) => ({
-    backgroundColor: isActive ? color : "#e5e7eb",
-    color: isActive ? "#fff" : "#000",
-    border: "none",
-    padding: "0.45rem 0.85rem",
-    borderRadius: "6px",
-    cursor: "pointer",
-    fontWeight: 500
-  });
-
   return (
-    <div>
-      <form onSubmit={handleAnalyze}>
-        <div>
-          <label>Followers JSON</label><br />
+    <div className="card">
+      <form onSubmit={handleAnalyze} className="upload-section">
+        <div className="file-input-group">
+          <label><strong>Followers JSON</strong></label>
           <input type="file" name="followers" accept=".json" />
         </div>
 
-        <br />
-
-        <div>
-          <label>Following JSON</label><br />
+        <div className="file-input-group">
+          <label><strong>Following JSON</strong></label>
           <input type="file" name="following" accept=".json" />
         </div>
 
-        <br />
-
-        <button type="submit">Analyze</button>
+        <button type="submit" className="btn-primary" style={{ width: "100%" }}>
+          Analyze
+        </button>
       </form>
 
       <hr />
 
       <h3>Statistics</h3>
-      <ul>
-        <li>Total Followers: <strong>{followers.length}</strong></li>
-        <li>Total Following: <strong>{following.length}</strong></li>
-        <li>Mutual Followers: <strong>{mutual.length}</strong></li>
-        <li>Not Follow Back: <strong>{notFollowBack.length}</strong></li>
-        <li>You Don’t Follow Back: <strong>{youNotFollowBack.length}</strong></li>
-      </ul>
+      <div className="stats-grid">
+        <div className="stat-item">
+          <span className="stat-value">{followers.length}</span>
+          <span className="stat-label">Total Followers</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-value">{following.length}</span>
+          <span className="stat-label">Total Following</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-value">{mutual.length}</span>
+          <span className="stat-label">Mutual Followers</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-value">{notFollowBack.length}</span>
+          <span className="stat-label">Not Follow Back</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-value">{youNotFollowBack.length}</span>
+          <span className="stat-label">You Don’t Follow Back</span>
+        </div>
+      </div>
 
       <h3>Show User List</h3>
 
-      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+      <div className="btn-group">
         <button
           type="button"
           onClick={() => setActiveView("mutual")}
-          style={buttonStyle(activeView === "mutual", "#2563eb")}
+          style={{
+            backgroundColor: activeView === "mutual" ? "#2563eb" : undefined,
+            color: activeView === "mutual" ? "white" : undefined
+          }}
         >
           Mutual ({mutual.length})
         </button>
@@ -125,7 +131,10 @@ function FileUpload() {
         <button
           type="button"
           onClick={() => setActiveView("notFollowBack")}
-          style={buttonStyle(activeView === "notFollowBack", "#dc2626")}
+          style={{
+            backgroundColor: activeView === "notFollowBack" ? "#dc2626" : undefined,
+            color: activeView === "notFollowBack" ? "white" : undefined
+          }}
         >
           Not Follow Back ({notFollowBack.length})
         </button>
@@ -133,7 +142,10 @@ function FileUpload() {
         <button
           type="button"
           onClick={() => setActiveView("youNotFollowBack")}
-          style={buttonStyle(activeView === "youNotFollowBack", "#ca8a04")}
+          style={{
+            backgroundColor: activeView === "youNotFollowBack" ? "#ca8a04" : undefined,
+            color: activeView === "youNotFollowBack" ? "white" : undefined
+          }}
         >
           You Don’t Follow Back ({youNotFollowBack.length})
         </button>
