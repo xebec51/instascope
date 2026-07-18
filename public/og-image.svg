@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">InstaScope preview image</title>
+  <desc id="desc">Preview image for a privacy-first Instagram export analysis tool.</desc>
+  <rect width="1200" height="630" fill="#f7f8fb" />
+  <rect x="88" y="84" width="1024" height="462" rx="28" fill="#ffffff" stroke="#d7dee3" />
+  <path
+    d="M266 170 380 214v86c0 72-43 132-114 166-71-34-114-94-114-166v-86l114-44Z"
+    fill="#256f73"
+  />
+  <circle cx="258" cy="302" r="70" fill="none" stroke="#14383b" stroke-width="18" />
+  <path d="m306 350 44 44" fill="none" stroke="#14383b" stroke-linecap="round" stroke-width="22" />
+  <text
+    x="460"
+    y="255"
+    fill="#14383b"
+    font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+    font-size="76"
+    font-weight="700"
+  >
+    InstaScope
+  </text>
+  <text
+    x="464"
+    y="324"
+    fill="#425466"
+    font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+    font-size="31"
+  >
+    Private Instagram export analysis in your browser.
+  </text>
+  <text
+    x="464"
+    y="383"
+    fill="#256f73"
+    font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+    font-size="27"
+    font-weight="600"
+  >
+    No login. No uploads. No tracking.
+  </text>
+</svg>

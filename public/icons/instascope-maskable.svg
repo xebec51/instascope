@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">InstaScope maskable app icon</title>
+  <desc id="desc">A privacy shield and scope mark on a teal background.</desc>
+  <rect width="512" height="512" fill="#256f73" />
+  <path
+    d="M256 88 394 141v103c0 86-52 159-138 198-86-39-138-112-138-198V141L256 88Z"
+    fill="#f7f8fb"
+  />
+  <circle cx="245" cy="248" r="90" fill="none" stroke="#14383b" stroke-width="24" />
+  <path d="m307 311 58 58" fill="none" stroke="#14383b" stroke-linecap="round" stroke-width="28" />
+  <circle cx="217" cy="226" r="27" fill="#256f73" />
+  <circle cx="292" cy="212" r="23" fill="#256f73" />
+  <circle cx="287" cy="294" r="26" fill="#256f73" />
+  <path
+    d="M240 221 270 215M232 249l35 30"
+    fill="none"
+    stroke="#256f73"
+    stroke-linecap="round"
+    stroke-width="16"
+  />
+</svg>

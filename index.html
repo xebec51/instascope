@@ -2,12 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; base-uri 'self'; connect-src 'self' ws: http://localhost:* http://127.0.0.1:*; font-src 'self'; form-action 'none'; frame-ancestors 'none'; img-src 'self' data: blob:; manifest-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; worker-src 'self' blob:"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>instascope</title>
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      name="description"
+      content="Analyze official Instagram followers and following exports privately in your browser. No login, uploads, tracking, or backend."
+    />
+    <meta name="theme-color" content="#256f73" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="application-name" content="InstaScope" />
+    <meta name="apple-mobile-web-app-title" content="InstaScope" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="InstaScope" />
+    <meta property="og:title" content="InstaScope" />
+    <meta
+      property="og:description"
+      content="A privacy-first browser tool for analyzing official Instagram relationship exports."
+    />
+    <meta property="og:image" content="/instascope/og-image.svg" />
+    <meta property="og:url" content="https://xebec51.github.io/instascope/" />
+    <link rel="canonical" href="https://xebec51.github.io/instascope/" />
+    <link rel="icon" type="image/svg+xml" href="/instascope/icons/instascope-icon.svg" />
+    <link rel="apple-touch-icon" href="/instascope/icons/instascope-maskable.svg" />
+    <title>InstaScope | Private Instagram Export Analyzer</title>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">InstaScope app icon</title>
+  <desc id="desc">A shield with a relationship graph and magnifying scope.</desc>
+  <rect width="512" height="512" rx="96" fill="#f7f8fb" />
+  <path
+    d="M256 70 396 124v110c0 89-53 167-140 208-87-41-140-119-140-208V124L256 70Z"
+    fill="#256f73"
+  />
+  <path
+    d="M256 112 354 150v83c0 63-36 119-98 152-62-33-98-89-98-152v-83l98-38Z"
+    fill="#e9f7f7"
+  />
+  <circle cx="220" cy="226" r="30" fill="#256f73" />
+  <circle cx="303" cy="208" r="24" fill="#256f73" />
+  <circle cx="294" cy="298" r="28" fill="#256f73" />
+  <path
+    d="M244 220 280 211M236 248l38 33"
+    fill="none"
+    stroke="#256f73"
+    stroke-linecap="round"
+    stroke-width="18"
+  />
+  <circle cx="258" cy="255" r="98" fill="none" stroke="#14383b" stroke-width="22" />
+  <path d="m326 325 55 55" fill="none" stroke="#14383b" stroke-linecap="round" stroke-width="26" />
+</svg>
