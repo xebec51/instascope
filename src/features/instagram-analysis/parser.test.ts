@@ -106,10 +106,9 @@ describe('Instagram relationship parser', () => {
       'followers_1.json',
     );
 
-    expect(result.ok ? result.file.accounts.map((account) => account.normalizedUsername) : []).toEqual([
-      'another.user',
-      'mixed_user',
-    ]);
+    expect(
+      result.ok ? result.file.accounts.map((account) => account.normalizedUsername) : [],
+    ).toEqual(['another.user', 'mixed_user']);
   });
 
   it('rejects invalid usernames without interpolating them into URLs', () => {

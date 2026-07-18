@@ -76,13 +76,7 @@ export type AnalysisResults = {
   hasTimestampData: boolean;
 };
 
-export type ImportStage =
-  | 'idle'
-  | 'selected'
-  | 'importing'
-  | 'parsing'
-  | 'complete'
-  | 'error';
+export type ImportStage = 'idle' | 'selected' | 'importing' | 'parsing' | 'complete' | 'error';
 
 export type ImportProgress = {
   stage: ImportStage;

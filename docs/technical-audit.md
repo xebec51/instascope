@@ -14,12 +14,12 @@ Last updated: 2026-07-18 on branch `codex/production-overhaul`.
 
 These commands were run before changing application behavior.
 
-| Command | Result | Notes |
-| --- | --- | --- |
-| `npm ci` | Passed | Installed 201 packages and audited 202 packages. Reported 10 vulnerabilities: 1 low, 4 moderate, 5 high. |
-| `npm run lint` | Passed | ESLint completed with no reported issues. |
-| `npm run build` | Passed | Vite built successfully. Output included `dist/assets/index-8H8MyblK.js` at 198.60 kB raw / 62.44 kB gzip and `dist/assets/index-CnCBzpn_.css` at 3.81 kB raw / 1.25 kB gzip. |
-| `npm audit` | Failed | Reported 10 vulnerabilities in transitive tooling dependencies, including advisories for `@babel/core`, `ajv`, `brace-expansion`, `flatted`, `js-yaml`, `minimatch`, `picomatch`, `postcss`, `rollup`, and `vite`. |
+| Command         | Result | Notes                                                                                                                                                                                                              |
+| --------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `npm ci`        | Passed | Installed 201 packages and audited 202 packages. Reported 10 vulnerabilities: 1 low, 4 moderate, 5 high.                                                                                                           |
+| `npm run lint`  | Passed | ESLint completed with no reported issues.                                                                                                                                                                          |
+| `npm run build` | Passed | Vite built successfully. Output included `dist/assets/index-8H8MyblK.js` at 198.60 kB raw / 62.44 kB gzip and `dist/assets/index-CnCBzpn_.css` at 3.81 kB raw / 1.25 kB gzip.                                      |
+| `npm audit`     | Failed | Reported 10 vulnerabilities in transitive tooling dependencies, including advisories for `@babel/core`, `ajv`, `brace-expansion`, `flatted`, `js-yaml`, `minimatch`, `picomatch`, `postcss`, `rollup`, and `vite`. |
 
 `npm outdated --long` showed newer compatible versions for React, React DOM, Vite, ESLint, `@vitejs/plugin-react`, and React type packages. `gh-pages` is still present but should be replaced by GitHub Actions Pages deployment.
 
@@ -206,3 +206,15 @@ There are currently no tests. Missing coverage includes:
 7. Replace `gh-pages` with GitHub Actions CI and Pages deployment workflows plus Dependabot.
 8. Rewrite README and add repository hygiene documents.
 9. Run final verification from a clean dependency installation and document all actual results.
+
+## Post-Implementation Notes
+
+- Runtime code now uses strict TypeScript and a feature-based structure under `src/features/instagram-analysis`.
+- Parser and analysis logic are pure, typed modules independent from React.
+- ZIP support uses `fflate` with an extraction filter so unrelated archive entries are not decompressed.
+- The obsolete `gh-pages` dependency and scripts were removed. Deployment now uses official GitHub Pages Actions.
+- New dependencies were added for TypeScript, Prettier, PWA generation, Vitest, React Testing Library, jest-axe, and Playwright.
+- A normal `npm audit fix` was used after dependency updates; `npm audit fix --force` was not used.
+- `npm audit` reported zero vulnerabilities after the dependency update.
+- The production app includes a CSP meta policy, no remote assets, no analytics, and a PWA service worker limited to static app-shell assets.
+- Coverage thresholds are enforced at 80% for statements, branches, functions, and lines.

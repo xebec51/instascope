@@ -151,7 +151,9 @@ export function dedupeAndSortAccounts(accounts: InstagramAccount[]): InstagramAc
   return [...grouped.values()].map(pickCanonicalAccount).sort(compareAccounts);
 }
 
-function getStringListDataRecord(entry: Record<string, unknown>): Record<string, unknown> | undefined {
+function getStringListDataRecord(
+  entry: Record<string, unknown>,
+): Record<string, unknown> | undefined {
   const listData = entry.string_list_data;
 
   if (!Array.isArray(listData)) {

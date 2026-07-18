@@ -55,7 +55,9 @@ function isHtmlFileName(fileName: string): boolean {
 
 function looksLikeHtml(text: string): boolean {
   const trimmed = text.trimStart().slice(0, 120).toLowerCase();
-  return trimmed.startsWith('<!doctype html') || trimmed.startsWith('<html') || trimmed.startsWith('<');
+  return (
+    trimmed.startsWith('<!doctype html') || trimmed.startsWith('<html') || trimmed.startsWith('<')
+  );
 }
 
 function downgradeToWarning(issue: ImportIssue): ImportIssue {
@@ -102,7 +104,10 @@ async function readFileText(file: File): Promise<string> {
   return file.text();
 }
 
-async function readJsonSource(file: File, expectedKind?: RelationshipKind): Promise<JsonSource | ImportIssue> {
+async function readJsonSource(
+  file: File,
+  expectedKind?: RelationshipKind,
+): Promise<JsonSource | ImportIssue> {
   if (isHtmlFileName(file.name)) {
     return createImportIssue(
       'html-export',
@@ -414,7 +419,9 @@ export async function importManualRelationshipFiles(
   }
 
   if (!followingFile) {
-    errors.push(createImportIssue('no-following-file', 'Choose a following JSON file for the manual import.'));
+    errors.push(
+      createImportIssue('no-following-file', 'Choose a following JSON file for the manual import.'),
+    );
   }
 
   onProgress?.({

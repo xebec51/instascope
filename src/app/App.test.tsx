@@ -143,7 +143,9 @@ describe('InstaScope app', () => {
   it('supports drag-and-drop file selection', async () => {
     render(<App />);
 
-    const dropTarget = screen.getByRole('button', { name: /choose or drop instagram export files/i });
+    const dropTarget = screen.getByRole('button', {
+      name: /choose or drop instagram export files/i,
+    });
     const files = [
       jsonFile('followers_1.json', [followerEntry('alpha_user')]),
       jsonFile('following.json', followingExport(['alpha_user'])),

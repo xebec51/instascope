@@ -27,7 +27,10 @@ test('imports a valid synthetic export and verifies results without network data
   await page.getByRole('button', { name: /analyze selected export/i }).click();
 
   await expect(page.getByText(/analysis complete/i)).toBeVisible();
-  const stats = page.getByRole('heading', { name: /statistics summary/i }).locator('..').locator('..');
+  const stats = page
+    .getByRole('heading', { name: /statistics summary/i })
+    .locator('..')
+    .locator('..');
   await expect(stats).toContainText('Followers');
   await expect(stats).toContainText('3');
   await expect(stats).toContainText('Following');
@@ -44,10 +47,12 @@ test('imports a valid synthetic export and verifies results without network data
   const download = await downloadPromise;
   expect(download.suggestedFilename()).toBe('instascope-notFollowedBackByUser.csv');
 
-  expect(requestUrls.some((url) => /alpha_friend|beta\.friend|Gamma_Friend/u.test(url))).toBe(false);
-  expect(
-    requestUrls.every((url) => url.startsWith('http://127.0.0.1:4173/instascope/')),
-  ).toBe(true);
+  expect(requestUrls.some((url) => /alpha_friend|beta\.friend|Gamma_Friend/u.test(url))).toBe(
+    false,
+  );
+  expect(requestUrls.every((url) => url.startsWith('http://127.0.0.1:4173/instascope/'))).toBe(
+    true,
+  );
 
   await page.getByRole('button', { name: /start over/i }).click();
   await expect(page.getByRole('heading', { name: /ready when your export is/i })).toBeVisible();
@@ -60,12 +65,16 @@ test('shows an accessible error for an invalid file', async ({ page }) => {
     .setInputFiles(path.join(fixturesRoot, 'invalid/not-instagram.json'));
   await page.getByRole('button', { name: /analyze selected export/i }).click();
 
-  await expect(page.getByRole('alert')).toContainText(/missing the expected Instagram relationship keys/i);
+  await expect(page.getByRole('alert')).toContainText(
+    /missing the expected Instagram relationship keys/i,
+  );
 });
 
 test('loads the built app under the GitHub Pages base path', async ({ page }) => {
   await page.goto('/instascope/');
   await expect(page.getByRole('heading', { level: 1, name: 'InstaScope' })).toBeVisible();
   await page.reload();
-  await expect(page.getByRole('button', { name: /choose or drop instagram export files/i })).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: /choose or drop instagram export files/i }),
+  ).toBeVisible();
 });

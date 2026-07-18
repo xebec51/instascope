@@ -30,7 +30,5 @@ export function generateAccountsCsv(
     ]),
   ];
 
-  return `${rows
-    .map((row) => row.map((cell) => escapeCsvCell(cell)).join(','))
-    .join('\r\n')}\r\n`;
+  return `${rows.map((row) => row.map((cell) => escapeCsvCell(cell)).join(',')).join('\r\n')}\r\n`;
 }

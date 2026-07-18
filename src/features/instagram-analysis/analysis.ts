@@ -21,7 +21,9 @@ export function analyzeConnections(parsed: ParsedExportResult): AnalysisResults 
   const followersByName = accountMap(parsed.followers);
   const followingByName = accountMap(parsed.following);
 
-  const mutual = parsed.followers.filter((account) => followingByName.has(account.normalizedUsername));
+  const mutual = parsed.followers.filter((account) =>
+    followingByName.has(account.normalizedUsername),
+  );
   const notFollowingBack = parsed.following.filter(
     (account) => !followersByName.has(account.normalizedUsername),
   );

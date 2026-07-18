@@ -47,11 +47,7 @@ function sortAccounts(accounts: InstagramAccount[], sortMode: SortMode): Instagr
   );
 }
 
-export function ResultsPanel({
-  analysis,
-  activeCategory,
-  onCategoryChange,
-}: ResultsPanelProps) {
+export function ResultsPanel({ analysis, activeCategory, onCategoryChange }: ResultsPanelProps) {
   const searchId = useId();
   const sortId = useId();
   const pageSizeId = useId();

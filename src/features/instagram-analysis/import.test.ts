@@ -26,9 +26,9 @@ function oversizedJsonFile(): File {
 
 describe('Instagram import pipeline', () => {
   it('recognizes follower pages and following filenames', () => {
-    expect(detectRelationshipKindFromPath('connections/followers_and_following/followers_2.json')).toBe(
-      'followers',
-    );
+    expect(
+      detectRelationshipKindFromPath('connections/followers_and_following/followers_2.json'),
+    ).toBe('followers');
     expect(detectRelationshipKindFromPath('following_1.json')).toBe('following');
     expect(detectRelationshipKindFromPath('profile.json')).toBeUndefined();
   });
@@ -100,7 +100,11 @@ describe('Instagram import pipeline', () => {
 
     expect(result.ok).toBe(false);
     expect(result.ok ? [] : result.errors.map((error) => error.code)).toEqual(
-      expect.arrayContaining(['unsupported-instagram-structure', 'no-followers-files', 'no-following-file']),
+      expect.arrayContaining([
+        'unsupported-instagram-structure',
+        'no-followers-files',
+        'no-following-file',
+      ]),
     );
   });
 

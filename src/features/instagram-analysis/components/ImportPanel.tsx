@@ -97,7 +97,8 @@ export function ImportPanel({
         <div className="dropzone__content">
           <p className="dropzone__title">Drop a ZIP archive or JSON files here</p>
           <p className="dropzone__hint">
-            Best choice: the official Instagram ZIP containing Followers and Following in JSON format.
+            Best choice: the official Instagram ZIP containing Followers and Following in JSON
+            format.
           </p>
           <span className="button button--primary">Choose files</span>
           <p className="file-selection" aria-live="polite">

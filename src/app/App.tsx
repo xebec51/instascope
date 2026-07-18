@@ -55,7 +55,9 @@ export default function App() {
     }
   }, [analysis]);
 
-  async function runImport(importer: () => Promise<Awaited<ReturnType<typeof importInstagramFiles>>>): Promise<void> {
+  async function runImport(
+    importer: () => Promise<Awaited<ReturnType<typeof importInstagramFiles>>>,
+  ): Promise<void> {
     setIsProcessing(true);
     setErrors([]);
     setWarnings([]);
@@ -123,9 +125,9 @@ export default function App() {
               <h2 id="privacy-title">Files never leave this browser</h2>
             </div>
             <p>
-              InstaScope has no backend, account login, analytics, or upload endpoint. It reads official Instagram
-              export files locally, keeps relationship data in memory only, and caches only the application shell for
-              offline use.
+              InstaScope has no backend, account login, analytics, or upload endpoint. It reads
+              official Instagram export files locally, keeps relationship data in memory only, and
+              caches only the application shell for offline use.
             </p>
           </section>
 
@@ -171,9 +173,8 @@ export default function App() {
             <section className="empty-state" aria-labelledby="empty-title">
               <h2 id="empty-title">Ready when your export is</h2>
               <p>
-                Import a ZIP archive or the JSON files from
-                connections/followers_and_following. A valid empty export will still show a completed zero-value
-                analysis.
+                Import a ZIP archive or the JSON files from connections/followers_and_following. A
+                valid empty export will still show a completed zero-value analysis.
               </p>
             </section>
           )}
@@ -186,10 +187,17 @@ export default function App() {
         </main>
 
         <footer className="site-footer">
-          <p>Privacy note: imported files, usernames, metrics, and generated CSV files stay on this device.</p>
+          <p>
+            Privacy note: imported files, usernames, metrics, and generated CSV files stay on this
+            device.
+          </p>
           <p>
             Open source:{' '}
-            <a href="https://github.com/xebec51/instascope" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/xebec51/instascope"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               xebec51/instascope
             </a>
             . InstaScope is not affiliated with, endorsed by, or sponsored by Meta or Instagram.

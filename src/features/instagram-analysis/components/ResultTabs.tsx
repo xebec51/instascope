@@ -29,7 +29,8 @@ export function ResultTabs({ activeCategory, counts, onChange }: ResultTabsProps
 
   function moveTab(direction: 1 | -1): void {
     const currentIndex = RESULT_CATEGORIES.findIndex((category) => category.id === activeCategory);
-    const nextIndex = (currentIndex + direction + RESULT_CATEGORIES.length) % RESULT_CATEGORIES.length;
+    const nextIndex =
+      (currentIndex + direction + RESULT_CATEGORIES.length) % RESULT_CATEGORIES.length;
     const nextCategory = RESULT_CATEGORIES[nextIndex]?.id ?? 'mutual';
     onChange(nextCategory);
     window.requestAnimationFrame(() => {
