@@ -100,25 +100,23 @@ export function ImportPanel({
             Best choice: the official Instagram ZIP containing Followers and Following in JSON format.
           </p>
           <span className="button button--primary">Choose files</span>
-          <input
-            ref={autoInputRef}
-            id={autoInputId}
-            className="sr-only"
-            type="file"
-            accept=".zip,.json,application/zip,application/json"
-            multiple
-            onClick={(event) => {
-              event.stopPropagation();
-            }}
-            onChange={(event) => {
-              handleAutoFiles(Array.from(event.currentTarget.files ?? []));
-            }}
-          />
           <p className="file-selection" aria-live="polite">
             {selectedDescription}
           </p>
         </div>
       </div>
+      <input
+        ref={autoInputRef}
+        id={autoInputId}
+        className="sr-only"
+        type="file"
+        aria-label="Choose Instagram export files"
+        accept=".zip,.json,application/zip,application/json"
+        multiple
+        onChange={(event) => {
+          handleAutoFiles(Array.from(event.currentTarget.files ?? []));
+        }}
+      />
 
       <div className="actions-row">
         <button

@@ -1,0 +1,23 @@
+{
+  "relationships_following": [
+    {
+      "title": "alpha_friend",
+      "string_list_data": [
+        {
+          "href": "https://www.instagram.com/alpha_friend/",
+          "value": "alpha_friend",
+          "timestamp": 1700000700
+        }
+      ]
+    },
+    {
+      "string_list_data": [
+        {
+          "href": "https://www.instagram.com/delta_friend/",
+          "value": "delta_friend",
+          "timestamp": 1700000800
+        }
+      ]
+    }
+  ]
+}
